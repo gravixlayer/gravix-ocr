@@ -125,7 +125,7 @@ export async function POST(request: NextRequest) {
             content: [
               {
                 type: "text",
-                text: 'Extract all the text from the image below. Provide the text in a single code block without any additional formatting or explanations. Do not include any metadata or image details.',
+                text: 'Extract all the text from the image.',
               },
               {
                 type: "image_url",
