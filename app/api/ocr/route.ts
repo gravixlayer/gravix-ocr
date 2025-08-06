@@ -2,10 +2,19 @@ import { type NextRequest, NextResponse } from "next/server"
 import OpenAI from "openai"
 import sharp from "sharp"
 
-const openai = new OpenAI({
-  apiKey: process.env.GRAVIXLAYER_API_KEY,
-  baseURL: "https://api.gravixlayer.com/v1/inference",
-})
+// Function to create OpenAI client with proper error handling
+function createOpenAIClient() {
+  const apiKey = process.env.GRAVIXLAYER_API_KEY
+  
+  if (!apiKey) {
+    throw new Error("GRAVIXLAYER_API_KEY environment variable is required")
+  }
+
+  return new OpenAI({
+    apiKey: apiKey,
+    baseURL: "https://api.gravixlayer.com/v1/inference",
+  })
+}
 
 // Image processing function to enhance OCR accuracy
 async function processImageForOCR(imageBuffer: Buffer): Promise<Buffer> {
@@ -106,6 +115,9 @@ export async function POST(request: NextRequest) {
     let completion: OpenAI.Chat.Completions.ChatCompletion
 
     try {
+      // Create OpenAI client at runtime
+      const openai = createOpenAIClient()
+      
       completion = await openai.chat.completions.create({
         messages: [
           {

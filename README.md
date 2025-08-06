@@ -128,6 +128,31 @@ The application integrates with the Gravix Layer API using the OpenAI-compatible
 - **Input**: Base64-encoded images with optimization prompt
 - **Output**: Extracted text in JSON format
 
+## Deployment
+
+### Vercel (Recommended)
+
+1. **Deploy to Vercel**
+   ```bash
+   npm install -g vercel
+   vercel
+   ```
+
+2. **Set Environment Variables**
+   - In your Vercel dashboard, go to your project settings
+   - Add environment variable: `GRAVIXLAYER_API_KEY` with your API key value
+   - Redeploy if needed
+
+3. **Production Build**
+   ```bash
+   vercel --prod
+   ```
+
+The project includes optimized Vercel configuration with:
+- Extended function timeout (30s) for OCR processing
+- CORS headers for API routes
+- Next.js 14 App Router optimization
+
 ## License
 
 This project is licensed under the MIT License.
