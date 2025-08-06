@@ -9,14 +9,6 @@
       "maxDuration": 30
     }
   },
-  "env": {
-    "GRAVIXLAYER_API_KEY": "@gravixlayer_api_key"
-  },
-  "build": {
-    "env": {
-      "GRAVIXLAYER_API_KEY": "@gravixlayer_api_key"
-    }
-  },
   "headers": [
     {
       "source": "/api/(.*)",
