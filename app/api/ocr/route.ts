@@ -125,7 +125,7 @@ export async function POST(request: NextRequest) {
             content: [
               {
                 type: "text",
-                text: 'This image has been preprocessed and optimized for text extraction. Please extract all visible text from this image with high accuracy. Return only the extracted text without any additional commentary, formatting, or explanations. Preserve the original text structure and line breaks where possible. If there is no text in the image, respond with "No text found".',
+                text: 'Extract all the text from the image below. Provide the text in a single code block without any additional formatting or explanations. Do not include any metadata or image details.',
               },
               {
                 type: "image_url",
