@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Upload, Copy, Check, X } from "lucide-react"
 import { SetupGuide } from "@/components/setup-guide"
+import { FormattedTextDisplay } from "@/components/formatted-text-display"
 
 export default function OCRApp() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -414,18 +415,19 @@ export default function OCRApp() {
 
             {/* Text Display */}
             <div className="flex-1 border border-zinc-800/60 rounded-lg overflow-hidden bg-zinc-950/50 backdrop-blur-sm relative min-h-0">
-              <Textarea
-                value={extractedText}
-                readOnly
-                className="w-full h-full bg-transparent border-0 resize-none focus:ring-0 text-xs leading-relaxed text-zinc-300 p-4 font-mono selection:bg-zinc-700 selection:text-white placeholder:text-zinc-600"
-                placeholder={
-                  isLoading 
-                    ? "Processing image and extracting text..." 
-                    : selectedFile 
-                      ? "Text will appear here once processing is complete"
-                      : "Upload an image to extract text with AI-powered OCR"
-                }
-              />
+              <div className="w-full h-full overflow-auto p-4">
+                <FormattedTextDisplay
+                  text={extractedText}
+                  className="w-full h-full text-xs leading-relaxed text-zinc-300 min-h-full"
+                  placeholder={
+                    isLoading 
+                      ? "Processing image and extracting text..." 
+                      : selectedFile 
+                        ? "Text will appear here once processing is complete"
+                        : "Upload an image to extract text with AI-powered OCR"
+                  }
+                />
+              </div>
               {!extractedText && !isLoading && (
                 <div className="absolute bottom-4 right-4 text-zinc-700 text-xs font-mono">
                   Ready

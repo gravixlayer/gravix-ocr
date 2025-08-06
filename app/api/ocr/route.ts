@@ -16,35 +16,6 @@ function createOpenAIClient() {
   })
 }
 
-// Function to clean extracted text by removing unwanted formatting
-function cleanExtractedText(text: string): string {
-  if (!text || text.trim() === "") {
-    return text
-  }
-
-  let cleanedText = text
-    // Remove markdown bold formatting
-    .replace(/\*\*(.*?)\*\*/g, '$1')
-    // Remove single asterisks
-    .replace(/\*(.*?)\*/g, '$1')
-    // Remove quotes and double quotes
-    .replace(/["'""'']/g, '')
-    // Remove excessive spaces and normalize whitespace
-    .replace(/\s+/g, ' ')
-    // Remove leading/trailing spaces from each line
-    .split('\n')
-    .map(line => line.trim())
-    // Remove empty lines
-    .filter(line => line.length > 0)
-    // Join back with proper line breaks
-    .join('\n')
-    // Final trim
-    .trim()
-
-  console.log("SERVER LOG: Text cleaned - removed formatting artifacts")
-  return cleanedText
-}
-
 // Image processing function to enhance OCR accuracy
 async function processImageForOCR(imageBuffer: Buffer): Promise<Buffer> {
   try {
@@ -201,14 +172,10 @@ export async function POST(request: NextRequest) {
     }
 
     const extractedText = completion.choices[0]?.message?.content || "No text could be extracted from the image"
-    console.log("SERVER LOG: Raw extracted text (first 100 chars):", extractedText.substring(0, 100) + "...")
-    
-    // Clean the extracted text to remove formatting artifacts
-    const cleanedText = cleanExtractedText(extractedText)
-    console.log("SERVER LOG: Cleaned text (first 100 chars):", cleanedText.substring(0, 100) + "...")
+    console.log("SERVER LOG: Extracted text (first 100 chars):", extractedText.substring(0, 100) + "...")
 
     console.log("--- OCR API Route Finished Successfully ---")
-    return NextResponse.json({ text: cleanedText })
+    return NextResponse.json({ text: extractedText })
   } catch (error) {
     // This outer catch block handles errors from file processing or re-thrown errors from the API call
     console.error("--- OCR API Route Failed ---")

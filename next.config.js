@@ -11,8 +11,6 @@ const nextConfig = {
       },
     ],
   },
-  // Optimize for Vercel deployment
-  output: 'standalone',
   
   // API route configuration
   async headers() {
