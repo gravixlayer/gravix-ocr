@@ -464,7 +464,7 @@ export default function OCRApp() {
       <div className="border-t border-zinc-800/30 bg-zinc-950/50 backdrop-blur-sm flex-shrink-0 py-3">
         <div className="w-full px-4 flex items-center justify-between">
           <p className="text-xs text-zinc-500 font-medium">
-            Made with <span className="text-zinc-300 font-semibold">Gravix Layer</span> | Gemma3:12b
+            Made with <a href="https://gravixlayer.com" target="_blank" rel="noopener noreferrer" className="text-zinc-300 font-semibold underline hover:text-white transition-colors">Gravix Layer</a> | Gemma3:12b
           </p>
           <div className="flex items-center gap-4 flex-1 justify-end">
             <a
