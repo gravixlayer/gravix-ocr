@@ -45,6 +45,7 @@ GravixOCR provides accurate text extraction from images through an intuitive web
    ```env
    GRAVIXLAYER_API_KEY=your_gravix_layer_api_key_here
    ```
+   You can obtain your API key from [platform.gravixlayer.com](https://platform.gravixlayer.com).
 
 4. **Start the development server**
    ```bash
