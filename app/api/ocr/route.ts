@@ -136,7 +136,7 @@ export async function POST(request: NextRequest) {
             ],
           },
         ],
-        model: "gemma3:12b",
+        model: "google/gemma-3-12b-it",
         temperature: 0,
         max_tokens: 2048,
         top_p: 1,
