@@ -12,7 +12,7 @@ function createOpenAIClient() {
 
   return new OpenAI({
     apiKey: apiKey,
-    baseURL: "https://api.gravixlayer.com/v1",
+    baseURL: "https://api.gravixlayer.com/v1/inference",
   })
 }
 
