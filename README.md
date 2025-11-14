@@ -123,7 +123,7 @@ The application includes server-side image optimization for improved OCR accurac
 
 The application integrates with the Gravix Layer API using the OpenAI-compatible interface:
 
-- **Endpoint**: `https://api.gravixlayer.com/v1/inference`
+- **Endpoint**: `https://api.gravixlayer.com/v1`
 - **Model**: `gemma3:12b`
 - **Authentication**: API key via `GRAVIXLAYER_API_KEY`
 - **Input**: Base64-encoded images with optimization prompt
